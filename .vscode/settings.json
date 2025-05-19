@@ -5,6 +5,7 @@
         "plaintext": false,
         "markdown": false,
         "scminput": false,
-        "yaml": false
+        "yaml": false,
+        "javascript": false
     }
 }

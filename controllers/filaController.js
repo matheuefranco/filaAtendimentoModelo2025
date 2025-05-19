@@ -106,3 +106,22 @@ function calcularDiferencaHoras(hora1, hora2) {
   
   return `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
 }
+
+function calcularIdade(dataNascimento) {
+  // Espera data no formato "dd/mm/aaaa"
+  const [dia, mes, ano] = dataNascimento.split('/').map(Number);
+
+  const hoje = new Date();
+  const dataNasc = new Date(ano, mes - 1, dia); // Mês começa em 0 no JavaScript
+
+  let idade = hoje.getFullYear() - dataNasc.getFullYear();
+  const mesAtual = hoje.getMonth();
+  const diaAtual = hoje.getDate();
+
+  // Verifica se a pessoa ainda não fez aniversário neste ano
+  if (mesAtual < mes - 1 || (mesAtual === mes - 1 && diaAtual < dia)) {
+    idade--;
+  }
+
+  return idade;
+}
