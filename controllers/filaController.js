@@ -1,13 +1,12 @@
-const minhaFila = new FilaCircular();
+const minhaFila = new FilaEncadeada();
 
 function addElemento(){
    const nome = document.getElementById("txtnovoNome");
     const cpf = document.getElementById("txtnovoCPF");
-   // if(!minhaFila.isFull()){
        const novoAtendimento = new Atendimento();
          novoAtendimento.nome = nome.value;
          novoAtendimento.cpf = cpf.value;
-         novoAtendimento.data = obterHoraAtual();
+         novoAtendimento.data = obterDataAtual();
          novoAtendimento.hora = obterHoraAtual();
 
        minhaFila.enqueue(novoAtendimento);
@@ -15,9 +14,7 @@ function addElemento(){
        nome.value = ""; 
        cpf.value = ""; 
        nome.focus(); 
-   // } 
-   // else
-    //    alert("Fila cheia!");     
+     
 }// fim addElemento
 //-----------------------------------
 function atenderFila(){
@@ -58,11 +55,14 @@ function mostrarMensagemRemocao(pessoaAtendida) {
  function mostrarFila() {
       const lblPessoasFila = document.getElementById("lblPessoasFila");
       const listaPessoasFila = document.getElementById("listFila");
-      lblPessoasFila.innerText = "Pessoas na fila:";
+      //listaPessoasFila.innerText = minhaFila.toString();
+      //console.log(minhaFila.toString());
+
+       lblPessoasFila.innerText = "Pessoas na fila:";
       listaPessoasFila.innerText = "";
-      for (const item of minhaFila){
+      for (const atendimento of minhaFila){
             const li = document.createElement("li");
-            li.innerText = item.toString();
+            li.innerText = atendimento.toString();
             listaPessoasFila.appendChild(li);
       }
     }
