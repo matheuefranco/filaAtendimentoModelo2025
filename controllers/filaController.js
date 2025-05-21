@@ -20,7 +20,6 @@ function addElemento(){
     //    alert("Fila cheia!");     
 }// fim addElemento
 //-----------------------------------
-
 function atenderFila(){
    if(!minhaFila.isEmpty()){
       let pessoaAtendida = minhaFila.dequeue();
@@ -57,23 +56,16 @@ function mostrarMensagemRemocao(pessoaAtendida) {
 //--------------------------------------------------------------------------------------------
  // Função para atualizar a exibição da fila
  function mostrarFila() {
-   console.log("Fila atual: " + minhaFila.toString());
-      const listaPessoasFila = document.getElementById("listFila");
       const lblPessoasFila = document.getElementById("lblPessoasFila");
-    if (minhaFila.isEmpty()) {
-        lblPessoasFila.innerText = "Fila vazia!";
-        listaPessoasFila.innerText = "";
-    } else {
-        lblPessoasFila.innerText = "Pessoas na fila:";
-          listaPessoasFila.innerText = "";
-          for (const item of minhaFila){
+      const listaPessoasFila = document.getElementById("listFila");
+      lblPessoasFila.innerText = "Pessoas na fila:";
+      listaPessoasFila.innerText = "";
+      for (const item of minhaFila){
             const li = document.createElement("li");
             li.innerText = item.toString();
             listaPessoasFila.appendChild(li);
-          }
       }
     }
-
 //--------------------------------------------------------------------------------------------
  // funcao data
  function obterDataAtual() {
